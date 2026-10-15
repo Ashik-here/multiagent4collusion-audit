@@ -1,0 +1,356 @@
+Source check: all rule lines found in the checked-out code.
+num_timesteps in configs: {'scripts/misinformation_simulation/debug_default.yaml': 100, 'scripts/intervention_simulation/debug_bad_ban.yaml': 100, 'scripts/intervention_simulation/debug_bad_debunking.yaml': 100, 'scripts/intervention_simulation/debug_bad_prebunking.yaml': 100}
+Hour used at each of the 100 steps (hour: number of steps): {13: 19, 14: 20, 15: 20, 16: 20, 17: 20, 18: 1}
+
+=== Main conditions (files named in the plotting script) ===
+
+### Decentralised: nodefense/test_1000_good_bad_random_bernoulli_wlx_nodefense.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good           n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### Decentralised (root copy): test_1000_good_bad_random_bernoulli_wlx.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0197 | effective per-step probability 0.1885 | expected turns per agent  18.85 (min 10.0, max 64.0) | expected total for group   1884.7
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### Centralised: nodefense/test_1000_good_bad_member_random_bernoulli_wlx_nodefense.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### Single agent: nodefense/test_901_good_alone_bad_random_bernoulli_wlx_nodefense.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### Only good: nodefense/test_901_good_onlygood_bad_random_bernoulli_wlx_nodefense.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+=== Worked examples (first agent of each type, plus first benign agent with an active hour in 13-18) ===
+  Decentralised
+    first of type: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 1 x 0.1 = 10.00
+    first of type: user_id 900 (bad), 9 starting posts
+      24 stored values: [0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 1 x 0.1 = 10.00
+    benign agent with an active hour in the window: user_id 4 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.2, 0.0, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 1.0, 0.1, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 1 + 20 x 0.1 + 20 x 0.1 + 1 x 0.1 = 28.00
+  Decentralised (root copy)
+    first of type: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 1.0, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 1 + 20 x 0.1 + 1 x 0.1 = 28.00
+    first of type: user_id 900 (bad), 9 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.2, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 1 x 0.1 = 10.00
+    benign agent with an active hour in the window: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 1.0, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 1 + 20 x 0.1 + 1 x 0.1 = 28.00
+  Centralised
+    first of type: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.3, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.3 + 20 x 0.1 + 1 x 0.1 = 14.00
+    first of type: user_id 900 (bad_member), 9 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.2, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 1 x 0.1 = 10.00
+    first of type: user_id 999 (bad_leader), 9 starting posts
+      24 stored values: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+      thresholds at those hours:     [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+      expected turns = 19 x 1 + 20 x 1 + 20 x 1 + 20 x 1 + 20 x 1 + 1 x 1 = 100.00
+    benign agent with an active hour in the window: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.3, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.3 + 20 x 0.1 + 1 x 0.1 = 14.00
+  Single agent
+    first of type: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 1.0, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 1 + 20 x 0.1 + 1 x 0.1 = 28.00
+    first of type: user_id 900 (alone_bad), 900 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.2, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 1 x 0.1 = 10.00
+    benign agent with an active hour in the window: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 1.0, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 1 + 20 x 0.1 + 1 x 0.1 = 28.00
+  Only good
+    first of type: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 1.0, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 1 + 20 x 0.1 + 1 x 0.1 = 28.00
+    first of type: user_id 900 (alone_bad), 900 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 0.1 + 1 x 0.1 = 10.00
+    benign agent with an active hour in the window: user_id 0 (good), 1 starting posts
+      24 stored values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]
+      stored values at hours [13, 14, 15, 16, 17, 18]: [0.0, 0.0, 0.0, 0.2, 0.0, 0.0]
+      thresholds at those hours:     [0.1, 0.1, 0.1, 1.0, 0.1, 0.1]
+      expected turns = 19 x 0.1 + 20 x 0.1 + 20 x 0.1 + 20 x 1 + 20 x 0.1 + 1 x 0.1 = 28.00
+
+=== Every released agent file (same rule, same schedule) ===
+
+### File: debug.csv
+    agents 4 | largest raw value in file (divisor) 37
+    bad            n=   2 | mean stored value 37.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    200.0
+    benign         n=   2 | mean stored value 10.2917 | effective per-step probability 0.4222 | expected turns per agent  42.22 (min 10.6, max 73.8) | expected total for group     84.4
+
+### File: test_1000_good_bad_member_random_bernoulli_wlx.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: test_1000_good_bad_member_random_bernoulli_xst.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: test_1000_good_bad_random_bernoulli_wlx.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0197 | effective per-step probability 0.1885 | expected turns per agent  18.85 (min 10.0, max 64.0) | expected total for group   1884.7
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: test_100_good_bad_random_bernoulli_wlx.csv
+    agents 100 | largest raw value in file (divisor) 0.2
+    bad            n=  10 | mean stored value 0.0158 | effective per-step probability 0.1729 | expected turns per agent  17.29 (min 10.0, max 46.0) | expected total for group    172.9
+    good           n=  90 | mean stored value 0.0187 | effective per-step probability 0.1779 | expected turns per agent  17.79 (min 10.0, max 64.0) | expected total for group   1601.1
+
+### File: test_100_good_bad_random_bernoulli_wlx2.csv
+    agents 100 | largest raw value in file (divisor) 0.2
+    bad            n=  10 | mean stored value 0.0158 | effective per-step probability 0.1729 | expected turns per agent  17.29 (min 10.0, max 46.0) | expected total for group    172.9
+    good           n=  90 | mean stored value 0.0187 | effective per-step probability 0.1779 | expected turns per agent  17.79 (min 10.0, max 64.0) | expected total for group   1601.1
+
+### File: test_10_good_bad_random_multimodal_wlx.csv
+    agents 10 | largest raw value in file (divisor) 0.899
+    bad            n=   5 | mean stored value 0.3342 | effective per-step probability 0.4201 | expected turns per agent  42.01 (min 28.9, max 59.9) | expected total for group    210.0
+    good           n=   5 | mean stored value 0.3342 | effective per-step probability 0.4655 | expected turns per agent  46.55 (min 28.4, max 65.2) | expected total for group    232.7
+
+### File: test_110_good_bad_member_random_multimodal_wlx.csv
+    agents 110 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=   9 | mean stored value 0.3342 | effective per-step probability 0.4514 | expected turns per agent  45.14 (min 25.2, max 57.0) | expected total for group    406.3
+    good           n= 100 | mean stored value 0.3342 | effective per-step probability 0.3735 | expected turns per agent  37.35 (min 18.9, max 61.0) | expected total for group   3735.1
+
+### File: test_110_good_bad_random_multimodal_wlx.csv
+    agents 110 | largest raw value in file (divisor) 0.9
+    bad            n=  10 | mean stored value 0.3342 | effective per-step probability 0.4814 | expected turns per agent  48.14 (min 27.0, max 62.4) | expected total for group    481.4
+    good           n= 100 | mean stored value 0.3342 | effective per-step probability 0.4040 | expected turns per agent  40.40 (min 20.2, max 67.0) | expected total for group   4040.4
+
+### File: test_110_good_onlygood_random_multimodal_wlx.csv
+    agents 110 | largest raw value in file (divisor) 0.9
+    bad            n=  10 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group    100.0
+    good           n= 100 | mean stored value 0.3342 | effective per-step probability 0.4040 | expected turns per agent  40.40 (min 20.2, max 67.0) | expected total for group   4040.4
+
+### File: test_901_good_alone_bad_random_bernoulli_xst.csv
+    agents 901 | largest raw value in file (divisor) 1
+    alone_bad      n=   1 | mean stored value 0.3333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: test_901_only_good.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: ban/test_1000_good_bad_member_random_bernoulli_wlx_ban.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: ban/test_1000_good_bad_random_bernoulli_wlx_ban.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good           n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### File: ban/test_1000_good_bad_random_bernoulli_wlx_ban_2.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good           n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### File: ban/test_1000_good_bad_random_bernoulli_wlx_ban_nomessage.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good           n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### File: ban/test_901_good_alone_bad_random_bernoulli_wlx_ban.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: ban/test_901_good_onlygood_bad_random_bernoulli_wlx_ban.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: debunking/test_1000_good_bad_member_random_bernoulli_wlx_debunking.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: debunking/test_1000_good_bad_random_bernoulli_wlx_debunking.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good           n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### File: debunking/test_901_good_alone_bad_random_bernoulli_wlx_debunking.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: debunking/test_901_good_onlygood_bad_random_bernoulli_wlx_debunking.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: misinformation/test_1000_good_bad_member_random_bernoulli_xst.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: misinformation/test_1000_good_bad_random_bernoulli_wlx.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0197 | effective per-step probability 0.1885 | expected turns per agent  18.85 (min 10.0, max 64.0) | expected total for group   1884.7
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: misinformation/test_901_good_alone_bad_random_bernoulli_xst.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: misinformation/activity_level/test_1000_good_bad_member_random_bernoulli_xst_0.1.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.1250 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group   4554.0
+    good           n= 900 | mean stored value 0.1250 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group  41400.0
+
+### File: misinformation/activity_level/test_1000_good_bad_member_random_bernoulli_xst_0.3.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.3333 | effective per-step probability 0.6400 | expected turns per agent  64.00 (min 64.0, max 64.0) | expected total for group   6336.0
+    good           n= 900 | mean stored value 0.3333 | effective per-step probability 0.6400 | expected turns per agent  64.00 (min 64.0, max 64.0) | expected total for group  57600.0
+
+### File: misinformation/activity_level/test_1000_good_bad_random_bernoulli_wlx_0.1.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad            n= 100 | mean stored value 0.1250 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group   4600.0
+    good           n= 900 | mean stored value 0.1250 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group  41400.0
+
+### File: misinformation/activity_level/test_1000_good_bad_random_bernoulli_wlx_0.3.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad            n= 100 | mean stored value 0.2917 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group   4600.0
+    good           n= 900 | mean stored value 0.2917 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group  41400.0
+
+### File: misinformation/activity_level/test_901_good_alone_bad_random_bernoulli_xst_0.1.csv
+    agents 901 | largest raw value in file (divisor) 1
+    alone_bad      n=   1 | mean stored value 0.1250 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group     46.0
+    good           n= 900 | mean stored value 0.1250 | effective per-step probability 0.4600 | expected turns per agent  46.00 (min 46.0, max 46.0) | expected total for group  41400.0
+
+### File: misinformation/activity_level/test_901_good_alone_bad_random_bernoulli_xst_0.3.csv
+    agents 901 | largest raw value in file (divisor) 1
+    alone_bad      n=   1 | mean stored value 0.3333 | effective per-step probability 0.1090 | expected turns per agent  10.90 (min 10.9, max 10.9) | expected total for group     10.9
+    good           n= 900 | mean stored value 0.3333 | effective per-step probability 0.1090 | expected turns per agent  10.90 (min 10.9, max 10.9) | expected total for group   9810.0
+
+### File: nodefense/test_1000_good_bad_member_random_bernoulli_wlx_nodefense.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: nodefense/test_1000_good_bad_random_bernoulli_wlx_nodefense.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good           n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### File: nodefense/test_901_good_alone_bad_random_bernoulli_wlx_nodefense.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: nodefense/test_901_good_onlygood_bad_random_bernoulli_wlx_nodefense.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good           n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: prebunking/test_1000_good_bad_member_random_bernoulli_wlx_prebunking.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good_prebunking n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: prebunking/test_1000_good_bad_random_bernoulli_wlx_prebunking.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good_prebunking n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### File: prebunking/test_901_good_alone_bad_random_bernoulli_wlx_prebunking.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good_prebunking n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: prebunking/test_901_good_onlygood_bad_random_bernoulli_wlx_prebunking.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good_prebunking n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: safety/test_1000_good_bad_member_random_bernoulli_wlx_safety.csv
+    agents 1000 | largest raw value in file (divisor) 1
+    bad_leader     n=   1 | mean stored value 1.0000 | effective per-step probability 1.0000 | expected turns per agent 100.00 (min 100.0, max 100.0) | expected total for group    100.0
+    bad_member     n=  99 | mean stored value 0.0194 | effective per-step probability 0.1195 | expected turns per agent  11.95 (min 10.0, max 22.0) | expected total for group   1182.6
+    good_safety    n= 900 | mean stored value 0.0196 | effective per-step probability 0.1198 | expected turns per agent  11.98 (min 10.0, max 22.0) | expected total for group  10777.6
+
+### File: safety/test_1000_good_bad_random_bernoulli_wlx_safety.csv
+    agents 1000 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0198 | effective per-step probability 0.2006 | expected turns per agent  20.06 (min 10.0, max 46.0) | expected total for group   2006.2
+    good_safety    n= 900 | mean stored value 0.0203 | effective per-step probability 0.1996 | expected turns per agent  19.96 (min 10.0, max 81.1) | expected total for group  17963.1
+
+### File: safety/test_901_good_alone_bad_random_bernoulli_wlx_safety.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0333 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good_safety    n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: safety/test_901_good_onlygood_bad_random_bernoulli_wlx_safety.csv
+    agents 901 | largest raw value in file (divisor) 0.2
+    alone_bad      n=   1 | mean stored value 0.0000 | effective per-step probability 0.1000 | expected turns per agent  10.00 (min 10.0, max 10.0) | expected total for group     10.0
+    good_safety    n= 900 | mean stored value 0.0196 | effective per-step probability 0.1889 | expected turns per agent  18.89 (min 10.0, max 64.0) | expected total for group  16999.2
+
+### File: scalling/test_1100_good_bad_random_bernoulli_scalling.csv
+    agents 1100 | largest raw value in file (divisor) 0.2
+    bad            n= 100 | mean stored value 0.0219 | effective per-step probability 0.1851 | expected turns per agent  18.51 (min 10.0, max 81.1) | expected total for group   1851.4
+    good           n=1000 | mean stored value 0.0196 | effective per-step probability 0.1888 | expected turns per agent  18.88 (min 10.0, max 64.0) | expected total for group  18883.9
+
+### File: scalling/test_110_good_bad_random_bernoulli_scalling.csv
+    agents 110 | largest raw value in file (divisor) 0.2
+    bad            n=  10 | mean stored value 0.0208 | effective per-step probability 0.2089 | expected turns per agent  20.89 (min 10.0, max 28.0) | expected total for group    208.9
+    good           n= 100 | mean stored value 0.0184 | effective per-step probability 0.1774 | expected turns per agent  17.74 (min 10.0, max 64.0) | expected total for group   1774.0

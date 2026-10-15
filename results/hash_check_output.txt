@@ -1,0 +1,50 @@
+== 1. E-commerce files: MultiAgent4Collusion vs OASIS demo at 98da5c2
+identical  e094c4aa30bfb9c0cd133b8372e8aced616feb2ab24b3724901462f49ff78e79  data/emall/product.json
+identical  611d02ee4a99bce2bbf88a4f73415c64c3db4e65777d05b73a98b3ecd71a38e4  data/reddit/user_data_36.json
+identical  3aedc37977e3d662fc31961b972bec649d7b13d714d8fc0fa2330bc0a445cbff  scripts/reddit_emall_demo/emall_simulation.py
+identical  4a1d6e67ae7bae67bef7207a347e1aee101c2ee5f0da3f1040856d9e428e806e  scripts/reddit_emall_demo/emall.yaml
+identical  7cee9a756bbb998b25b69bf02a1d94fa6323c83d474a2651fd82030bafdc59a2  scripts/reddit_emall_demo/action_space_prompt.txt
+identical  6f4898becaa26a171d911dba88d1638c4a88f7ccebbc1789b58daacba4c0544d  oasis/social_platform/schema/product.sql
+
+== 2. Dependency files: MultiAgent4Collusion vs OASIS
+identical  06ec99e52104831cc781d42bc207f7bacb4d3ab88dd724613e10931b6b2f8b36  pyproject.toml (OASIS 093c052)
+identical  20d21a353514bb62e6a78a851aa54f8a9880b5984a7b255c46cc2a1aa64d242b  poetry.lock (OASIS 5504f84)
+
+== 3. CoAID news files: copy in MultiAgent4Collusion vs official CoAID at d238224
+identical  0f812e011a689c88f1cd215e32b5e586161fab30a3a14d5355de2978b37cc4d8  05-01-2020/NewsFakeCOVID-19.csv
+identical  374cc58444688ac696df9c32afc2db9e74a76c611c9723ca76071a68427e11fb  05-01-2020/NewsRealCOVID-19.csv
+identical  008cfcbe14cc8fc62f204e5794ab6d01db5cd4c058cdf72874b337827629843b  07-01-2020/NewsFakeCOVID-19.csv
+identical  84152a5f28c5d9a249ee08a121eec75610d985be76bb1777b8d63d451dd29551  07-01-2020/NewsRealCOVID-19.csv
+identical  2f991fbdaba994ff1d435c944c69161dd4f146409905c2d77e39d65464bed160  09-01-2020/NewsFakeCOVID-19.csv
+identical  a0c4737fb3defe6b70b40a41ee2b831c254873a885ca1fc7234834459fad50e5  09-01-2020/NewsRealCOVID-19.csv
+identical  48d044a624c6b3fab543f6ccaf5bf053916dca3456c7eaddefca12c73e8fd9e7  11-01-2020/NewsFakeCOVID-19.csv
+identical  6ffbfe149c920e131dac8b99034da9409badb32784d1ff691304ce2ba1e6409e  11-01-2020/NewsRealCOVID-19.csv
+
+== 4. Released agent files that are byte-identical copies of each other
+-- group 18471c6a18a0
+   ban/test_901_good_onlygood_bad_random_bernoulli_wlx_ban.csv
+   debunking/test_901_good_onlygood_bad_random_bernoulli_wlx_debunking.csv
+   nodefense/test_901_good_onlygood_bad_random_bernoulli_wlx_nodefense.csv
+   test_901_only_good.csv
+-- group 5c921007c2e4
+   ban/test_1000_good_bad_member_random_bernoulli_wlx_ban.csv
+   debunking/test_1000_good_bad_member_random_bernoulli_wlx_debunking.csv
+   misinformation/test_1000_good_bad_member_random_bernoulli_xst.csv
+   nodefense/test_1000_good_bad_member_random_bernoulli_wlx_nodefense.csv
+   test_1000_good_bad_member_random_bernoulli_wlx.csv
+   test_1000_good_bad_member_random_bernoulli_xst.csv
+-- group 7bca47f64a35
+   ban/test_1000_good_bad_random_bernoulli_wlx_ban.csv
+   ban/test_1000_good_bad_random_bernoulli_wlx_ban_2.csv
+   ban/test_1000_good_bad_random_bernoulli_wlx_ban_nomessage.csv
+   debunking/test_1000_good_bad_random_bernoulli_wlx_debunking.csv
+   nodefense/test_1000_good_bad_random_bernoulli_wlx_nodefense.csv
+-- group 7d75b6e180da
+   ban/test_901_good_alone_bad_random_bernoulli_wlx_ban.csv
+   debunking/test_901_good_alone_bad_random_bernoulli_wlx_debunking.csv
+   misinformation/test_901_good_alone_bad_random_bernoulli_xst.csv
+   nodefense/test_901_good_alone_bad_random_bernoulli_wlx_nodefense.csv
+-- group 85088af78346
+   misinformation/test_1000_good_bad_random_bernoulli_wlx.csv
+   test_1000_good_bad_random_bernoulli_wlx.csv
+(all 45 agent files hashed; files not listed are unique)

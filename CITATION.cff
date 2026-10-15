@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use these notes or scripts, please cite them as below."
+title: "MultiAgent4Collusion audit: checking the released code of 'When Autonomy Goes Rogue' against the paper"
+authors:
+  - family-names: Rahman
+    given-names: Ashikur
+    affiliation: Macquarie University
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/Ashik-here/multiagent4collusion-audit"
+keywords:
+  - reproducibility
+  - multi-agent systems
+  - LLM agents
+  - code audit
+references:
+  - type: article
+    title: "When Autonomy Goes Rogue: Preparing for Risks of Multi-Agent Collusion in Social Systems"
+    authors:
+      - family-names: Ren
+        given-names: Qibing
+      - family-names: Xie
+        given-names: Sitao
+      - family-names: Wei
+        given-names: Longxuan
+      - family-names: Yin
+        given-names: Zhenfei
+      - family-names: Yan
+        given-names: Junchi
+      - family-names: Ma
+        given-names: Lizhuang
+      - family-names: Shao
+        given-names: Jing
+    year: 2025
+    identifiers:
+      - type: doi
+        value: 10.48550/arXiv.2507.14660
+  - type: software
+    title: MultiAgent4Collusion
+    authors:
+      - family-names: Ren
+        given-names: Qibing
+    repository-code: "https://github.com/renqibing/MultiAgent4Collusion"
+    commit: b6daeff24883a4c253858c4dab3261383f888243

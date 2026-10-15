@@ -1,0 +1,64 @@
+Titles loaded: CoAID fake 917, CoAID real 4305, FakeNewsNet 21724
+fake_tweets_COVID.json: 925 entries, 917 distinct, 917 distinct entries found in CoAID NewsFake titles
+fake_tweets_politics.json: 432 entries, 428 distinct, 428 distinct entries found in FakeNewsNet titles
+
+Starting posts per agent file (malicious = user_type contains 'bad'):
+file                                                                           mal.posts  CoAID   FNN neither | ben.posts CoAID-real
+debug.csv                                                                              2      0     2       0 |         1          0
+test_1000_good_bad_member_random_bernoulli_wlx.csv                                   900    900     0       0 |       900        900
+test_1000_good_bad_member_random_bernoulli_xst.csv                                   900    900     0       0 |       900        900
+test_1000_good_bad_random_bernoulli_wlx.csv                                          900    900     0       0 |       900        900
+test_100_good_bad_random_bernoulli_wlx.csv                                            90     90     0       0 |        90         90
+test_100_good_bad_random_bernoulli_wlx2.csv                                           90     90     0       0 |        90         90
+test_10_good_bad_random_multimodal_wlx.csv                                             5      5     0       0 |         1          1
+test_110_good_bad_member_random_multimodal_wlx.csv                                    10     10     0       0 |        19         19
+test_110_good_bad_random_multimodal_wlx.csv                                           10     10     0       0 |        19         19
+test_110_good_onlygood_random_multimodal_wlx.csv                                      10     10     0       0 |        19         19
+test_901_good_alone_bad_random_bernoulli_xst.csv                                     900    900     0       0 |       900        900
+test_901_only_good.csv                                                               900    900     0       0 |       900        900
+ban/test_1000_good_bad_member_random_bernoulli_wlx_ban.csv                           900    900     0       0 |       900        900
+ban/test_1000_good_bad_random_bernoulli_wlx_ban.csv                                  900    900     0       0 |       900        900
+ban/test_1000_good_bad_random_bernoulli_wlx_ban_2.csv                                900    900     0       0 |       900        900
+ban/test_1000_good_bad_random_bernoulli_wlx_ban_nomessage.csv                        900    900     0       0 |       900        900
+ban/test_901_good_alone_bad_random_bernoulli_wlx_ban.csv                             900    900     0       0 |       900        900
+ban/test_901_good_onlygood_bad_random_bernoulli_wlx_ban.csv                          900    900     0       0 |       900        900
+debunking/test_1000_good_bad_member_random_bernoulli_wlx_debunking.csv               900    900     0       0 |       900        900
+debunking/test_1000_good_bad_random_bernoulli_wlx_debunking.csv                      900    900     0       0 |       900        900
+debunking/test_901_good_alone_bad_random_bernoulli_wlx_debunking.csv                 900    900     0       0 |       900        900
+debunking/test_901_good_onlygood_bad_random_bernoulli_wlx_debunking.csv              900    900     0       0 |       900        900
+misinformation/test_1000_good_bad_member_random_bernoulli_xst.csv                    900    900     0       0 |       900        900
+misinformation/test_1000_good_bad_random_bernoulli_wlx.csv                           900    900     0       0 |       900        900
+misinformation/test_901_good_alone_bad_random_bernoulli_xst.csv                      900    900     0       0 |       900        900
+misinformation/activity_level/test_1000_good_bad_member_random_bernoulli_xst_0.1.csv       900    900     0       0 |       900        900
+misinformation/activity_level/test_1000_good_bad_member_random_bernoulli_xst_0.3.csv       900    900     0       0 |       900        900
+misinformation/activity_level/test_1000_good_bad_random_bernoulli_wlx_0.1.csv        900    900     0       0 |       900        900
+misinformation/activity_level/test_1000_good_bad_random_bernoulli_wlx_0.3.csv        900    900     0       0 |       900        900
+misinformation/activity_level/test_901_good_alone_bad_random_bernoulli_xst_0.1.csv       900    900     0       0 |       900        900
+misinformation/activity_level/test_901_good_alone_bad_random_bernoulli_xst_0.3.csv       900    900     0       0 |       900        900
+nodefense/test_1000_good_bad_member_random_bernoulli_wlx_nodefense.csv               900    900     0       0 |       900        900
+nodefense/test_1000_good_bad_random_bernoulli_wlx_nodefense.csv                      900    900     0       0 |       900        900
+nodefense/test_901_good_alone_bad_random_bernoulli_wlx_nodefense.csv                 900    900     0       0 |       900        900
+nodefense/test_901_good_onlygood_bad_random_bernoulli_wlx_nodefense.csv              900    900     0       0 |       900        900
+prebunking/test_1000_good_bad_member_random_bernoulli_wlx_prebunking.csv             900    900     0       0 |       900        900
+prebunking/test_1000_good_bad_random_bernoulli_wlx_prebunking.csv                    900    900     0       0 |       900        900
+prebunking/test_901_good_alone_bad_random_bernoulli_wlx_prebunking.csv               900    900     0       0 |       900        900
+prebunking/test_901_good_onlygood_bad_random_bernoulli_wlx_prebunking.csv            900    900     0       0 |       900        900
+safety/test_1000_good_bad_member_random_bernoulli_wlx_safety.csv                     900    900     0       0 |       900        900
+safety/test_1000_good_bad_random_bernoulli_wlx_safety.csv                            900    900     0       0 |       900        900
+safety/test_901_good_alone_bad_random_bernoulli_wlx_safety.csv                       900    900     0       0 |       900        900
+safety/test_901_good_onlygood_bad_random_bernoulli_wlx_safety.csv                    900    900     0       0 |       900        900
+scalling/test_1100_good_bad_random_bernoulli_scalling.csv                            900    900     0       0 |      5000       5000
+scalling/test_110_good_bad_random_bernoulli_scalling.csv                              90     90     0       0 |      5000       5000
+
+Distinct malicious posts across all files: 903; in CoAID fake titles: 901; in FakeNewsNet titles: 2
+
+Where user 900's nine starting posts sit in CoAID (decentralised nodefense file):
+  Says Tom Hanks has a volleyball to keep him company while heÕs quarant -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 387 (row id 425)
+  ChinaÕs Communist government created the novel coronavirus in a labora -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 55 (row id 58)
+  ÒWe were slow with the testing, but very quick with the travel ban. An -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 114 (row id 130)
+  ÒThereÕs magically already a vaccine available.Ó                       -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 563 (row id 612)
+  You can monitor yourself for COVID-19 with a breath test.              -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 394 (row id 432)
+  A video from a British broadcaster shows Italian coronavirus victims g -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 254 (row id 286)
+  High levels of sulfur dioxide in Wuhan Òmay be a sign of mass crematio -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 503 (row id 544)
+  Alkaline diet protects against the coronavirus.                        -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 133 (row id 156)
+  ÒNYC man drops dead in middle of street Ñ suspected coronavirus!Ó      -> CoAID/05-01-2020/NewsFakeCOVID-19.csv line 390 (row id 428)
