@@ -27,6 +27,13 @@ same repo, just renamed.
 
 There's more detail, with links to the exact lines, in [FINDINGS.md](FINDINGS.md).
 
+**What the IDs mean:** the letter is the group and the number is the finding within it.
+
+- **A** = how often agents act (the activation rule and turn counts)
+- **B** = where the misinformation posts come from
+- **C** = other checks against the paper, including what's missing from the release
+- **D** = points from my first read of the code that I went back and re-checked
+
 | ID | Finding | Status |
 |---|---|---|
 | A1–A4 | The paper says agents act with probability 0.02 per step, but the code rescales the stored values, so in decentralised runs agents act at about 0.19–0.20 per step (roughly ten times more). | Confirmed |

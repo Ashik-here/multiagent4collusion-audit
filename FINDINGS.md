@@ -6,6 +6,11 @@ otherwise. Page numbers are from arXiv version 2 of the paper.
 
 "Confirmed" means the files settle it. "Partly confirmed" means only part of it holds, or the evidence is indirect.
 
+Each finding has an ID. The letter is the group: A is how often agents act, B is where the posts come from, C is
+other checks against the paper (including what's missing from the release), and D is points from my first read of
+the code that I went back and re-checked. The number is just which finding it is in that group. A few D numbers are
+missing here: D11 and D12 are in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md), and I left out some minor points.
+
 Some terms I use a lot:
 
 - **Turn:** an agent gets activated and the code calls its language model, which picks actions.
